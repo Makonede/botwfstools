@@ -12,7 +12,7 @@ from pathlib import Path
 import rstb, rstb.util
 import sarc
 import shutil
-import syaz0
+import oead
 import sys
 import typing
 import re
@@ -70,7 +70,7 @@ def _is_dir(path: Path) -> bool:
 def _compress_file(path: Path) -> None:
     data = bytes()
     with open(path, 'rb') as f:
-        data = syaz0.compress(f.read())
+        data = oead.yaz0.compress(f.read())
 
     compressed_path = path
     if not path.suffix.startswith('.s'):
