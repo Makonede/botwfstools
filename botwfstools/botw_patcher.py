@@ -40,7 +40,7 @@ AOC_PREFIX_LIST = (
     'Pack/RemainsWater.pack',
     'Pack/RemainsFire.pack',
     'Pack/FinalTrial.pack')
-AOC_VOICE_PATTERN = re.compile('^Voice/.*/Stream_Demo6.*/.*\.bfstm$')
+AOC_VOICE_PATTERN = re.compile(r'^Voice/.*/Stream_Demo6.*/.*\.bfstm$')
 
 def _is_archive_filename(path: Path) -> bool:
     return path.suffix[1:] in ARCHIVE_EXTS
@@ -212,7 +212,7 @@ def get_path(path: str, is_aoc: bool) -> str:
     if new_path.startswith(AOC_PREFIX_LIST) or AOC_VOICE_PATTERN.match(new_path):
         return AOC_PREFIX + new_path
 
-    num_match = re.search('Dungeon(\d\d\d)', new_path)
+    num_match = re.search(r'Dungeon(\d\d\d)', new_path)
     if num_match:
         if int(num_match[1]) > 119:
             if new_path.startswith('Pack/') and new_path.endswith('.pack'):
